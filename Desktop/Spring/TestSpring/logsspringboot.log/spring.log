@@ -1,0 +1,96 @@
+2023-07-19 14:29:33.043  WARN 16872 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=19h25m1s43ms35µs).
+2023-07-19 15:04:39.633  WARN 16872 --- [http-nio-8083-exec-7] o.s.web.servlet.PageNotFound             : No mapping for GET /favicon.ico
+2023-07-19 15:04:40.342  INFO 16872 --- [http-nio-8083-exec-10] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 283 ms
+2023-07-19 15:04:47.498  INFO 16872 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-19 15:04:47.506  INFO 16872 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-19 15:04:47.510  INFO 16872 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-07-19 15:04:55.355  INFO 3672 --- [restartedMain] c.e.testspring.TestSpringApplication     : Starting TestSpringApplication using Java 11.0.12 on DESKTOP-2ERJ7DS with PID 3672 (C:\Users\user\Desktop\Spring\TestSpring\target\classes started by user in C:\Users\user\Desktop\Spring\TestSpring)
+2023-07-19 15:04:55.357  INFO 3672 --- [restartedMain] c.e.testspring.TestSpringApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-07-19 15:04:55.402  INFO 3672 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-19 15:04:55.402  INFO 3672 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-19 15:04:56.098  INFO 3672 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-19 15:04:56.146  INFO 3672 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 1 JPA repository interfaces.
+2023-07-19 15:04:56.744  INFO 3672 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8083 (http)
+2023-07-19 15:04:56.756  INFO 3672 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-19 15:04:56.757  INFO 3672 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-07-19 15:04:56.891  INFO 3672 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-19 15:04:56.891  INFO 3672 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1488 ms
+2023-07-19 15:04:57.081  INFO 3672 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-19 15:04:57.134  INFO 3672 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-07-19 15:04:57.266  INFO 3672 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-07-19 15:04:57.351  INFO 3672 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-19 15:04:57.481  INFO 3672 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-19 15:04:57.492  INFO 3672 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2023-07-19 15:04:57.912  INFO 3672 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-19 15:04:57.920  INFO 3672 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-19 15:04:58.256  WARN 3672 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-19 15:04:58.751  INFO 3672 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-19 15:04:58.786  INFO 3672 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8083 (http) with context path ''
+2023-07-19 15:04:58.796  INFO 3672 --- [restartedMain] c.e.testspring.TestSpringApplication     : Started TestSpringApplication in 3.872 seconds (JVM running for 5.05)
+2023-07-19 15:05:05.906  INFO 3672 --- [http-nio-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-19 15:05:05.907  INFO 3672 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-07-19 15:05:05.908  INFO 3672 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-07-19 15:05:06.384  INFO 3672 --- [http-nio-8083-exec-2] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 265 ms
+2023-07-19 15:06:44.095  INFO 3672 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-19 15:06:44.102  INFO 3672 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-19 15:06:44.116  INFO 3672 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-07-19 15:06:50.542  INFO 22064 --- [restartedMain] c.e.testspring.TestSpringApplication     : Starting TestSpringApplication using Java 11.0.12 on DESKTOP-2ERJ7DS with PID 22064 (C:\Users\user\Desktop\Spring\TestSpring\target\classes started by user in C:\Users\user\Desktop\Spring\TestSpring)
+2023-07-19 15:06:50.543  INFO 22064 --- [restartedMain] c.e.testspring.TestSpringApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-07-19 15:06:50.586  INFO 22064 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-19 15:06:50.586  INFO 22064 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-19 15:06:51.313  INFO 22064 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-19 15:06:51.369  INFO 22064 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 1 JPA repository interfaces.
+2023-07-19 15:06:52.037  INFO 22064 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8083 (http)
+2023-07-19 15:06:52.047  INFO 22064 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-19 15:06:52.048  INFO 22064 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.74]
+2023-07-19 15:06:52.126  INFO 22064 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-19 15:06:52.126  INFO 22064 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1539 ms
+2023-07-19 15:06:52.261  INFO 22064 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-19 15:06:52.294  INFO 22064 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-07-19 15:06:52.378  INFO 22064 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-07-19 15:06:52.446  INFO 22064 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-19 15:06:52.730  INFO 22064 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-19 15:06:52.747  INFO 22064 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2023-07-19 15:06:53.397  INFO 22064 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-19 15:06:53.407  INFO 22064 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-19 15:06:53.770  WARN 22064 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-19 15:06:54.297  INFO 22064 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-19 15:06:54.326  INFO 22064 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8083 (http) with context path ''
+2023-07-19 15:06:54.338  INFO 22064 --- [restartedMain] c.e.testspring.TestSpringApplication     : Started TestSpringApplication in 4.226 seconds (JVM running for 5.242)
+2023-07-19 15:06:58.941  INFO 22064 --- [http-nio-8083-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-19 15:06:58.942  INFO 22064 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-07-19 15:06:58.943  INFO 22064 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-07-19 15:13:41.900  WARN 22064 --- [http-nio-8083-exec-2] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitp
+2023-07-19 15:13:42.709  WARN 22064 --- [http-nio-8083-exec-3] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitpp
+2023-07-19 15:13:43.575  WARN 22064 --- [http-nio-8083-exec-4] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitp
+2023-07-19 15:13:43.712  WARN 22064 --- [http-nio-8083-exec-5] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduit
+2023-07-19 15:13:43.878  WARN 22064 --- [http-nio-8083-exec-6] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduit
+2023-07-19 15:13:44.123  WARN 22064 --- [http-nio-8083-exec-7] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduito
+2023-07-19 15:13:44.434  WARN 22064 --- [http-nio-8083-exec-8] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitoo
+2023-07-19 15:13:44.612  WARN 22064 --- [http-nio-8083-exec-9] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitooo
+2023-07-19 15:13:44.776  WARN 22064 --- [http-nio-8083-exec-10] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitoooo
+2023-07-19 15:13:44.950  WARN 22064 --- [http-nio-8083-exec-1] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitooooo
+2023-07-19 15:13:45.218  WARN 22064 --- [http-nio-8083-exec-2] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitoooooo
+2023-07-19 15:13:45.447  WARN 22064 --- [http-nio-8083-exec-3] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitooooooo
+2023-07-19 15:13:45.741  WARN 22064 --- [http-nio-8083-exec-4] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitoooooooo
+2023-07-19 15:13:45.975  WARN 22064 --- [http-nio-8083-exec-5] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitooooooooo
+2023-07-19 15:13:46.174  WARN 22064 --- [http-nio-8083-exec-6] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitoooooooooo
+2023-07-19 15:13:46.367  WARN 22064 --- [http-nio-8083-exec-7] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitooooooooooo
+2023-07-19 15:13:46.568  WARN 22064 --- [http-nio-8083-exec-8] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitoooooooooooo
+2023-07-19 15:13:46.750  WARN 22064 --- [http-nio-8083-exec-9] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitooooooooooooo
+2023-07-19 15:13:46.936  WARN 22064 --- [http-nio-8083-exec-10] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitoooooooooooooo
+2023-07-19 15:13:47.110  WARN 22064 --- [http-nio-8083-exec-1] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitooooooooooooooo
+2023-07-19 15:13:47.277  WARN 22064 --- [http-nio-8083-exec-2] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitoooooooooooooooo
+2023-07-19 15:13:47.441  WARN 22064 --- [http-nio-8083-exec-3] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduitooooooooooooooooo
+2023-07-19 15:14:24.613  WARN 22064 --- [http-nio-8083-exec-5] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduito
+2023-07-19 15:14:34.380  WARN 22064 --- [http-nio-8083-exec-10] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduit/
+2023-07-19 15:14:34.541  WARN 22064 --- [http-nio-8083-exec-1] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduit/
+2023-07-19 15:14:35.714  WARN 22064 --- [http-nio-8083-exec-2] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduit/
+2023-07-19 15:14:37.115  WARN 22064 --- [http-nio-8083-exec-3] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduit/
+2023-07-19 15:14:37.279  WARN 22064 --- [http-nio-8083-exec-4] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduit/
+2023-07-19 15:14:37.422  WARN 22064 --- [http-nio-8083-exec-5] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduit/
+2023-07-19 15:14:38.009  WARN 22064 --- [http-nio-8083-exec-6] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduit/
+2023-07-19 15:14:38.316  WARN 22064 --- [http-nio-8083-exec-7] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduit/
+2023-07-19 15:15:44.542  WARN 22064 --- [http-nio-8083-exec-2] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduit/
+2023-07-19 15:15:46.566  WARN 22064 --- [http-nio-8083-exec-8] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduit/
+2023-07-19 15:15:46.715  WARN 22064 --- [http-nio-8083-exec-9] o.s.web.servlet.PageNotFound             : No mapping for GET /rechercheProduit/
