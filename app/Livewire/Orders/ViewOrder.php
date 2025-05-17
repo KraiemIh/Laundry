@@ -82,7 +82,7 @@ class ViewOrder extends Component
             $this->store_email = $store_email;
         }
         $this->balance = $this->order->total -  Payment::where('order_id',$this->order->id)->sum('received_amount');
-        $this->paid_amount = $this->balance;
+        $this->paid_amount = $this->order->total -$this->balance;;
         if(session()->has('selected_language'))
         {   /* session has selected language */
             $this->lang = Translation::where('id',session()->get('selected_language'))->first();
@@ -103,11 +103,11 @@ class ViewOrder extends Component
             'payment_type'  => 'required',
         ]);
         /* if paid amount > balance */
-        if($this->paid_amount > $this->balance)
+      /*  if($this->paid_amount > $this->balance)
         {
             $this->addError('payment_type','Amount cannot be greater than balance');
             return 0;
-        }
+        }*/
         Payment::create([
             'payment_date'  => \Carbon\Carbon::today(),
             'customer_id'   => $this->customer->id ?? null,
@@ -121,9 +121,9 @@ class ViewOrder extends Component
         ]);
         $this->payments = Payment::where('order_id',$this->order->id)->get();
         $this->balance = $this->order->total -  Payment::where('order_id',$this->order->id)->sum('received_amount');
-        $this->paid_amount = $this->balance;
+        $this->paid_amount = $this->order->total- $this->balance;
         $this->notes = '';
-        $this->payment_type = '';
+       // $this->payment_type = '';
         $this->dispatch('closemodal');
         $this->dispatch(
             'alert', ['type' => 'success',  'message' => 'Payment Successfully Added!']);

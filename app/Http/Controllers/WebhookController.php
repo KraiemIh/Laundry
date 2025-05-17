@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use App\Events\OrderCreated;
 use App\Models\Order;
+use App\Models\Customer;
 
 class WebhookController extends Controller
 {
@@ -67,12 +68,24 @@ class WebhookController extends Controller
 
             // Generate order number
             $orderNumber = 'ORD-' . str_pad($newOrderId, 4, '0', STR_PAD_LEFT);
+            $customer = Customer::where('email', $data['E-mail Address'])->first();
+            if (!$customer) {
 
+            $customer = Customer::create([
+                'name' => $data['Name'] ?? 'Unknown Customer',
+                'phone' => $data['Phone Number'] ?? '',
+                'email' => $data['E-mail Address'] ?? null,
+                'tax_number' => $data['Tax Number'] ?? null,
+                'address' => $data['Address'] ?? '',
+                'created_by' => 1, // Auth::user()->id si tu utilises l’authentification
+                'is_active' => true,
+            ]);
+}
             // Insert into orders table
             $order = Order::create([
                 'id' => $newOrderId,
                 'order_number' => $orderNumber,
-                'customer_id' => null,
+                'customer_id' => $customer->id,
                 'customer_name' => $data['Name'] ?? 'Unknown Customer',
                 'phone_number' => $data['Phone Number'] ?? '',
                 'address' => $data['Address'] ?? '',
@@ -86,7 +99,7 @@ class WebhookController extends Controller
                 'tax_amount' => 0,
                 'total' => 0,
                 'note' => null,
-                'status' => 1,
+                'status' => 0,
                 'order_type' => $orderType,
                 'created_by' => 1,
                 'financial_year_id' => 1,

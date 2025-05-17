@@ -17,4 +17,9 @@ class OrderDetail extends Model
         'service_detail_total',
         'color_code'
     ];
+    public function service()
+    {
+        return $this->belongsTo(Service::class, 'service_id');
+    }
+
 }

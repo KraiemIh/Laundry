@@ -14,9 +14,9 @@ class HomePage extends Component
     public function render()
     {
         $this->pending_count = Order::where('status',0)->count();
-        $this->processing_count = Order::where('status',1)->count();
-        $this->ready_count = Order::where('status',2)->count();
-        $this->delivered_count = Order::where('status',3)->count();
+        $this->processing_count = Order::where('status',2)->count();
+        $this->ready_count = Order::where('status',3)->count();
+        $this->delivered_count = Order::where('status',4)->count();
         return view('livewire.home-page');
     }
 
@@ -24,10 +24,10 @@ class HomePage extends Component
     public function mount()
     {
         $this->pending_count = Order::where('status',0)->count();
-        $this->processing_count = Order::where('status',1)->count();
-        $this->ready_count = Order::where('status',2)->count();
-        $this->delivered_count = Order::where('status',3)->count();
-        $returned_count =  Order::where('status',4)->count();
+        $this->processing_count = Order::where('status',2)->count();
+        $this->ready_count = Order::where('status',3)->count();
+        $this->delivered_count = Order::where('status',4)->count();
+        $returned_count =  Order::where('status',5)->count();
         $this->orders = Order::whereDate('delivery_date',\Carbon\Carbon::today()->toDateString())->get();
         if(session()->has('selected_language'))
         {

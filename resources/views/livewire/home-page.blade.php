@@ -87,13 +87,15 @@
                                     {{ $lang->data['all_orders'] ?? 'All Orders' }}</option>
                                 <option class="select-box" value="0">{{ $lang->data['pending'] ?? 'Pending' }}
                                 </option>
-                                <option class="select-box" value="1">
-                                    {{ $lang->data['processing'] ?? 'Processing' }}</option>
-                                <option class="select-box" value="2">
-                                    {{ $lang->data['ready_to_deliver'] ?? 'Ready To Deliver' }}</option>
-                                <option class="select-box" value="3">{{ $lang->data['delivered'] ?? 'Delivered' }}
+                                  <option class="select-box" value="1">{{ $lang->data['Pick_up'] ?? 'Pick-up' }}
                                 </option>
-                                <option class="select-box" value="4">{{ $lang->data['returned'] ?? 'Returned' }}
+                                <option class="select-box" value="2">
+                                    {{ $lang->data['processing'] ?? 'Processing' }}</option>
+                                <option class="select-box" value="3">
+                                    {{ $lang->data['ready_to_deliver'] ?? 'Ready To Deliver' }}</option>
+                                <option class="select-box" value="4">{{ $lang->data['delivered'] ?? 'Delivered' }}
+                                </option>
+                                <option class="select-box" value="5">{{ $lang->data['returned'] ?? 'Returned' }}
                                 </option>
                             </select>
                         </div>
@@ -162,6 +164,11 @@
                             <span class="text-secondary-light text-sm fw-normal">{{$lang->data['pending'] ?? 'Pending'}}
                             </span>
                         </li>
+  <li class="d-flex align-items-center gap-2">
+                            <span class="w-12-px h-12-px radius-2 tw-bg-[#ff85cf]"></span>
+                            <span class="text-secondary-light text-sm fw-normal">{{$lang->data['Pick-up'] ?? 'Pick-up'}}
+                            </span>
+                        </li>
                         <li class="d-flex align-items-center gap-2">
                             <span class="w-12-px h-12-px radius-2 tw-bg-[#faae42]"></span>
                             <span class="text-secondary-light text-sm fw-normal">{{$lang->data['processing'] ?? 'Processing'}}
@@ -200,11 +207,11 @@
         var chartdata = document.getElementById("chartdata").value;
         var options = {
                 series: JSON.parse(chartdata),
-                labels: ['Pending', 'Processing', 'Ready to Deliver', 'Delivered', 'Returned'],
+                labels: ['Pending','Pick-up', 'Processing', 'Ready to Deliver', 'Delivered', 'Returned'],
                 legend: {
                     show: false
                 },
-                colors: ['#8392ab', '#faae42', '#2dce89', '#0083ff', '#f5365c'],
+                colors: ['#8392ab','#ff85cf', '#faae42', '#2dce89', '#0083ff', '#f5365c'],
 
                 chart: {
                     type: 'donut',

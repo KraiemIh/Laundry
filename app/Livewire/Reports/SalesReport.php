@@ -39,7 +39,7 @@ class SalesReport extends Component
       /* report section */
       public function report()
       {
-          $this->orders = \App\Models\Order::whereDate('order_date', '>=', $this->from_date)->whereDate('order_date', '<=', $this->to_date)->where('status', 3)->latest()->get();
+          $this->orders = \App\Models\Order::whereDate('order_date', '>=', $this->from_date)->whereDate('order_date', '<=', $this->to_date)->where('status', 4)->latest()->get();
       }
       /* download pdf file */
       public function downloadFile()

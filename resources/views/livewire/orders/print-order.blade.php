@@ -57,11 +57,36 @@
                       <thead>
                         <tr>
                           <th scope="col" class="">#</th>
-                          <th scope="col" class="">{{ $lang->data['service_name'] ?? 'Service Name' }}</th>
-                          <th scope="col" class=""> {{ $lang->data['color'] ?? 'Color' }}</th>
-                          <th scope="col" class="">{{ $lang->data['rate'] ?? 'Rate' }}</th>
-                          <th scope="col" class=""> {{ $lang->data['qty'] ?? 'QTY' }}</th>
-                          <th scope="col" class=""> {{ $lang->data['total'] ?? 'Total' }}</th>
+                          <th scope="col" class="">
+                              <div style="font-size: 12px; color: #888;">
+                               Service Name<br>
+                               <span style="display: block; font-size: 12px; color: #888;">اسم الخدمة</span>
+                              </div>
+                          </th>
+                          <th scope="col" class="">
+                              <div style="font-size: 12px; color: #888;">
+                               Color<br>
+                               <span style="display: block; font-size: 12px; color: #888;">اللون</span>
+                              </div> 
+                          </th>
+                          <th scope="col" class="">
+                              <div style="font-size: 12px; color: #888;">
+                               Rate<br>
+                               <span style="display: block; font-size: 12px; color: #888;">السعر</span>
+                              </div>
+                          </th>
+                          <th scope="col" class="">
+                              <div style="font-size: 12px; color: #888;">
+                               QTY<br>
+                               <span style="display: block; font-size: 12px; color: #888;">الكمية</span>
+                              </div>
+                          </th>
+                          <th scope="col" class="">
+                              <div style="font-size: 12px; color: #888;">
+                               Total<br>
+                               <span style="display: block; font-size: 12px; color: #888;">المجموع</span>
+                              </div>
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -145,46 +170,61 @@
                             <div class="pb-2">{{ $lang->data['payment_details'] ?? 'Payment Details' }}</div>
                             <div class="tw-flex tw-justify-between tw-items-center tw-w-[17rem] tw-mt-2">
                                 <div class="  tw-text-sm">
-                                    {{ $lang->data['sub_total'] ?? 'Sub Total' }}
+                                    <div style="font-size: 12px; color: #888;">
+                                     Sub Total<br>
+                                     <span style="display: block; font-size: 12px; color: #888;">المجموع الفرعي</span>
+                                    </div>
                                 </div>
                                 <div class=" tw-text-sm">
                                     {{ getFormattedCurrency($order->sub_total) }}
                                 </div>
                             </div>
                             <div class="tw-flex tw-justify-between tw-items-center tw-w-[17rem]">
-                                <div class="  tw-text-sm">
-                                    {{ $lang->data['addon'] ?? 'Addon' }}
+                                <div style="font-size: 12px; color: #888;">
+                                 Addon<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">الإضافات</span>
                                 </div>
                                 <div class=" tw-text-sm">
                                     {{ getFormattedCurrency($order->addon_total) }}
                                 </div>
                             </div>
                             <div class="tw-flex tw-justify-between tw-items-center tw-w-[17rem]">
-                                <div class="  tw-text-sm">
-                                    {{ $lang->data['discount'] ?? 'Discount' }}
+                                <div style="font-size: 12px; color: #888;">
+                                 Discount<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">الخصم</span>
                                 </div>
                                 <div class=" tw-text-sm">
                                     {{ getFormattedCurrency($order->discount) }}
                                 </div>
                             </div>
                             <div class="tw-flex tw-justify-between tw-items-center tw-w-[17rem]">
-                                <div class="  tw-text-sm">
-                                    {{ $lang->data['tax'] ?? 'Tax' }}
-                                        ({{ $order->tax_percentage }}%)
+                                <div style="font-size: 12px; color: #888;">
+                                 Tax ({{ $order->tax_percentage }}%)<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">الضريبة</span>
                                 </div>
                                 <div class=" tw-text-sm">
                                     {{ getFormattedCurrency($order->tax_amount) }}
                                 </div>
                             </div>
                             <div class="tw-flex tw-justify-between tw-items-center tw-w-[17rem] tw-mt-2  ">
-                                <div class=" tw-font-bold tw-text-sm">
-                                    {{ $lang->data['gross_total'] ?? 'Gross Total' }}
+                                <div style="font-size: 12px; color: #888;">
+                                 Gross Total<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">إجمالي المبلغ</span>
                                 </div>
                                 <div class="tw-font-bold tw-text-sm">
                                     {{ getFormattedCurrency($order->total) }}
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <!-- Arabic Disclaimer -->
+                    <div class="text-center" style="margin-top: 20px; font-size: 12px; line-height: 1.5;">
+                     <p>
+                     الغسيل غير مسؤول عن أي عناصر غير مدرجة في نسخة فاتورة العميل. يحتفظ الغسيل بالحق في التخلص من الملابس التي لم يتم جمعها في غضون 30 يومًا المذكورة في الفاتورة. الغسيل غير مسئول عن فقدان الأشياء داخل القماش. بعد شهر واحد نحن لسنا مسؤولين عن البنود الخاصة بك.
+                     </p>
+                     <p>
+                     ملاحظة: يرجى جمع القماش الخاص بك في غضون 7 أيام شكرا لك ... قم  بالزيارة مرة أخرى
+                     </p>
                     </div>
                     <hr class="tw-mt-4">
                     <div class="tw-flex tw-justify-between tw-text-sm tw-mt-4 ">
@@ -544,7 +584,7 @@
         <div class="page-wrapper" style="padding:36px">
             <div class="invoice-card">
                 <div class="invoice-head">
-                    <img src="{{ getSiteLogo() }}" style="height:34px;max-width:80%;" alt="">
+                    <img src="/assets/images/aromaLaundry.png" style="height:34px;max-width:80%;" alt="">
                     <h4>{{ $sitename }}</h4>
                     <p class="my-0">{{ $address }} - {{ $zipcode }}</p>
                     <p class="my-0">{{ $phone }}</p><br>
@@ -554,7 +594,7 @@
                     <div class="invoice-list">
                         <br />
                         <div class="text-center">
-                            <h4 class="heading font-bold" style="font-size: 25px">{{ $lang->data['tax_invoice'] ?? 'Tax Invoice' }}</h4>
+                            <h4 class="heading font-bold" style="font-size: 25px">{{ $lang->data['tax_invoice'] ?? '' }}</h4>
                             <h4 class="heading heading-child"></h4>
                         </div>
                         <br />
@@ -580,13 +620,19 @@
                         </div>
                         <div class="row-data" style="border:none; margin-bottom: 1px">
                             <div class="item-info">
-                                <h5 class="item-title"><b>{{ $lang->data['order_no'] ?? 'Order No' }}</b></h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Order No<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">رقم الطلب</span>
+                                </div>
                             </div>
                             <h5 class="my-5"><b>{{ $order->order_number }}</b></h5>
                         </div>
                         <div class="row-data" style="border:none;">
                             <div class="item-info">
-                                <h5 class="item-title"><b>{{ $lang->data['order_date'] ?? 'Order Date' }}</b></h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Order Date<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">تاريخ الطلب</span>
+                                </div>
                             </div>
                             <h5 class="my-5">
                                 <b>{{ \Carbon\Carbon::parse($order->order_date)->format('d/m/Y') }}</b>
@@ -594,8 +640,10 @@
                         </div>
                         <div class="row-data" style="border:none;">
                             <div class="item-info">
-                                <h5 class="item-title"><b>{{ $lang->data['delivery_date'] ?? 'Delivery Date' }}</b>
-                                </h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Delivery Date<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">تاريخ التسليم</span>
+                                </div>
                             </div>
                             <h5 class="my-5">
                                 <b>{{ \Carbon\Carbon::parse($order->delivery_date)->format('d/m/Y') }}</b>
@@ -603,7 +651,10 @@
                             </h5>
                         </div>
                         <div class="text-black" style="text-align: right">
-                            <h6 class="heading1" style="font-weight:bold; font-size:14px;">{{ $lang->data['service_name'] ?? 'Service Name' }}</h6>
+                            <div style="font-size: 12px; color: #888;">
+                             Service Name<br>
+                             <span style="display: block; font-size: 12px; color: #888;">اسم الخدمة</span>
+                            </div>
                             <h6 class="heading1 heading-child" style="font-weight:bold; font-size:14px;">{{ $lang->data['rate'] ?? 'Rate' }}</h6>
                             <h6 class="heading1 heading-child" style="font-weight:bold; font-size:14px;">{{ $lang->data['qty'] ?? 'QTY' }}</h6>
                             <h6 class="heading1 heading-child" style="font-weight:bold; font-size:14px;">{{ $lang->data['total'] ?? 'Total' }}</h6>
@@ -647,17 +698,17 @@
                         @endforeach
                         @endif
                         @endif
-                    </div>
-                    <div class="invoice-footer mb-15">
-                        <div class="row-data">
-                            <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['sub_total'] ?? 'Sub Total' }}:</h5>
+          : #888;">المجموع الفرعي</span>
+                                </div>
                             </div>
                             <h5 class="my-5">{{ getFormattedCurrency($order->sub_total) }}</h5>
                         </div>
                         <div class="row-data">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['addon'] ?? 'Addon' }}:</h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Addon<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">الإضافات</span>
+                                </div>
                             </div>
                             <h5 class="my-5">
                                 {{ getFormattedCurrency($order->addon_total) }}
@@ -665,7 +716,10 @@
                         </div>
                         <div class="row-data">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['discount'] ?? 'Discount' }}:</h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Discount<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">الخصم</span>
+                                </div>
                             </div>
                             <h5 class="my-5">{{ getFormattedCurrency($order->discount) }}</h5>
                         </div>
@@ -683,24 +737,28 @@
                         </div> --}}
                         @if($order->tax_type==2)
                         <div class="row-data">
-                            <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['before_tax'] ?? 'Before Tax' }}
-                                    :</h5>
+                            <div style="font-size: 12px; color: #888;">
+                             Before Tax<br>
+                             <span style="display: block; font-size: 12px; color: #888;">قبل الضريبة</span>
                             </div>
                             <h5 class="my-5">{{ getFormattedCurrency($order->sub_total) }}</h5>
                         </div>
                         @endif
                         <div class="row-data">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['tax'] ?? 'Tax' }}
-                                    ({{ $order->tax_percentage }}%):</h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Tax ({{ $order->tax_percentage }}%)<br>
+                                 <span style="display: block; font-size: 12px; color: #888;" >الضريبة</span>
+                                </div>
                             </div>
                             <h5 class="my-5">{{ getFormattedCurrency($order->tax_amount) }}</h5>
                         </div>
                         <div class="row-data">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['gross_total'] ?? 'Gross Total' }}:
-                                </h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Gross Total<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">إجمالي المبلغ</span>
+                                </div>
                             </div>
                             <h5 class="my-5">{{ getFormattedCurrency($order->total) }}
                             </h5>
@@ -710,11 +768,22 @@
                                 @php
                                 $current_paid_amount = \App\Models\Payment::where('order_id', $order->id)->sum('received_amount');
                                 @endphp
-                                <h5 class="item-title">{{ $lang->data['paid_amount'] ?? 'Paid Amount' }}:
-                                </h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Paid Amount<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">المبلغ المدفوع</span>
+                                </div>
                             </div>
                             <h5 class="my-5">{{ getFormattedCurrency($current_paid_amount) }}
                             </h5>
+                        </div>
+                        <!-- Arabic Disclaimer -->
+                        <div class="text-center" style="margin-top: 20px; font-size: 12px; line-height: 1.5;">
+                        <p>
+                        الغسيل غير مسؤول عن أي عناصر غير مدرجة في نسخة فاتورة العميل. يحتفظ الغسيل بالحق في التخلص من الملابس التي لم يتم جمعها في غضون 30 يومًا المذكورة في الفاتورة. الغسيل غير مسئول عن فقدان الأشياء داخل القماش. بعد شهر واحد نحن لسنا مسؤولين عن البنود الخاصة بك.
+                        </p>
+                        <p>
+                        ملاحظة: يرجى جمع القماش الخاص بك في غضون 7 أيام شكرا لك ... قم  بالزيارة مرة أخرى
+                        </p>
                         </div>
                         @php
                         $received_payment_row = \App\Models\Payment::where('order_id', $order->id)->first();
@@ -1113,7 +1182,7 @@
         <div class="page-wrapper" style="padding:5px">
             <div class="invoice-card">
                 <div class="invoice-head">
-                    <img src="{{ getSiteLogo() }}" style="height:34px;max-width:80%;" alt="">
+                    <img src="{{ asset('assets/images/aromaLaundry.png') }}" style="height:34px;max-width:80%;" alt="">
                     <h4>{{ $sitename }}</h4>
                     <p class="my-0">{{ $address }} - {{ $zipcode }}</p>
                     <p class="my-0">{{$phone ? getCountryCode() : ''}}{{ $phone }}</p><br>
@@ -1123,7 +1192,7 @@
                     <div class="invoice-list">
                         <br />
                         <div class="text-center">
-                            <h4 class="heading font-bold" style="font-size: 25px">{{ $lang->data['tax_invoice'] ?? 'Tax Invoice' }}</h4>
+                            <h4 class="heading font-bold" style="font-size: 25px">{{ $lang->data['tax_invoice'] ?? '' }}</h4>
                             <h4 class="heading heading-child"></h4>
                         </div> <br />
 
@@ -1149,13 +1218,19 @@
                         </div>
                         <div class="row-data" style="border:none; margin-bottom: 1px">
                             <div class="item-info">
-                                <h5 class="item-title"><b>{{ $lang->data['order_no'] ?? 'Order No' }}:</b></h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Order No<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">رقم الطلب</span>
+                                </div>
                             </div>
                             <h5 class="my-5"><b>{{ $order->order_number }}</b></h5>
                         </div>
                         <div class="row-data" style="border:none;">
                             <div class="item-info">
-                                <h5 class="item-title"><b>{{ $lang->data['order_date'] ?? 'Order Date' }}:</b></h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Order Date<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">تاريخ الطلب</span>
+                                </div>
                             </div>
                             <h5 class="my-5">
                                 <b>{{ \Carbon\Carbon::parse($order->order_date)->format('d/m/Y') }}</b>
@@ -1163,8 +1238,10 @@
                         </div>
                         <div class="row-data" style="border:none;">
                             <div class="item-info">
-                                <h5 class="item-title"><b>{{ $lang->data['delivery_date'] ?? 'Delivery Date' }}:</b>
-                                </h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Delivery Date<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">تاريخ التسليم</span>
+                                </div>
                             </div>
                             <h5 class="my-5">
                                 <b>{{ \Carbon\Carbon::parse($order->delivery_date)->format('d/m/Y') }}</b>
@@ -1173,7 +1250,10 @@
                         </div>
 
                         <div class="text-black" style="text-align: right">
-                            <h6 class="heading1" style="font-weight:bold; font-size:14px;">{{ $lang->data['service_name'] ?? 'Service Name' }}</h6>
+                            <div style="font-size: 12px; color: #888;">
+                             Service Name<br>
+                             <span style="display: block; font-size: 12px; color: #888;">اسم الخدمة</span>
+                            </div>
                             <h6 class="heading1 heading-child" style="font-weight:bold; font-size:14px;">{{ $lang->data['rate'] ?? 'Rate' }}</h6>
                             <h6 class="heading1 heading-child" style="font-weight:bold; font-size:14px;">{{ $lang->data['qty'] ?? 'QTY' }}</h6>
                             <h6 class="heading1 heading-child" style="font-weight:bold; font-size:14px;">{{ $lang->data['total'] ?? 'Total' }}</h6>
@@ -1221,13 +1301,19 @@
                     <div class="invoice-footer mb-15">
                         <div class="row-data">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['sub_total'] ?? 'Sub Total' }}:</h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Sub Total<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">المجموع الفرعي</span>
+                                </div>
                             </div>
                             <h5 class="my-5">{{ getFormattedCurrency($order->sub_total) }}</h5>
                         </div>
                         <div class="row-data">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['addon'] ?? 'Addon' }}:</h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Addon<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">الإضافات</span>
+                                </div>
                             </div>
                             <h5 class="my-5">
                                 {{ getFormattedCurrency($order->addon_total) }}
@@ -1235,23 +1321,30 @@
                         </div>
                         <div class="row-data">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['discount'] ?? 'Discount' }}:</h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Discount<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">الخصم</span>
+                                </div>
                             </div>
                             <h5 class="my-5">{{ getFormattedCurrency($order->discount) }}</h5>
                         </div>
                         @if($order->tax_type==2)
                         <div class="row-data">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['before_tax'] ?? 'Before Tax' }}
-                                    :</h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Before Tax<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">قبل الضريبة</span>
+                                </div>
                             </div>
                             <h5 class="my-5">{{ getFormattedCurrency($order->sub_total) }}</h5>
                         </div>
                         @endif
                         <div class="row-data">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['tax'] ?? 'Tax' }}
-                                    ({{ $order->tax_percentage }}%):</h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Tax ({{ $order->tax_percentage }}%)<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">الضريبة</span>
+                                </div>
                             </div>
                             <h5 class="my-5">{{ getFormattedCurrency($order->tax_amount) }}</h5>
                         </div>
@@ -1316,13 +1409,7 @@
                     <div class="invoice_address">
                         <div class="text-center">
                             <h3 class="mt-10">
-                                {{ isset($site['default_thanks_message']) && !empty($site['default_thanks_message']) ? $site['default_thanks_message'] : '' }}
-                            </h3>
-                            <p class="b_top">{{ $lang->data['powered_by'] ?? 'Powered By   ' }}
-                                <b>{{ getApplicationName() }}</b>
-                            </p>
-                        </div>
-                    </div>
+                           </div>
                 </div>
             </div>
     </body>
@@ -1703,7 +1790,7 @@
                 <div class="invoice-details" style="border-top:none;margin-top : 0;">
                     <div class="invoice-list">
                         <div class="text-center" style="margin-top:8px;margin-bottom:8px;">
-                            <h4 class="heading font-bold" style="font-size: 25px">{{ $lang->data['tax_invoice'] ?? 'Tax Invoice' }}</h4>
+                            <h4 class="heading font-bold" style="font-size: 25px">{{ $lang->data['tax_invoice'] ?? '' }}</h4>
                             <h4 class="heading heading-child"></h4>
                         </div> 
                         <div class="row" style="border:none; margin-bottom: 0px;padding : 0px;">
@@ -1728,13 +1815,20 @@
                         </div>
                         <div class="row" style="border:none; margin-bottom: 1px">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['order_no'] ?? 'Order No' }}:</h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Order No<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">رقم الطلب</span>
+                                </div>
+                                    
                             </div>
                             <h5 class="my-5"><b>{{ $order->order_number }}</b></h5>
                         </div>
                         <div class="row" style="border:none;">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['order_date'] ?? 'Order Date' }}:</h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Order Date<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">تاريخ الطلب</span>
+                                </div>
                             </div>
                             <h5 class="my-5">
                                 <b>{{ \Carbon\Carbon::parse($order->order_date)->format('d/m/Y') }}</b>
@@ -1742,17 +1836,28 @@
                         </div>
                         <div class="row" style="border:none;">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['delivery_date'] ?? 'Delivery Date' }}:
-                                </h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Delivery Date<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">تاريخ التسليم</span>
+                                </div>
                             </div>
                             <h5 class="my-5">
                                 <b>{{ \Carbon\Carbon::parse($order->delivery_date)->format('d/m/Y') }}</b>
                             </h5>
                         </div>
                         <div class="text-black" style="text-align: right; margin : 4px; margin-left: 0px; margin-right: 0px;">
-                            <h6 class="heading1" style="font-weight:bold; font-size:14px;">{{ $lang->data['name'] ?? 'Name' }}</h6>
-                            <h6 class="heading1 heading-child" style="font-weight:bold; font-size:14px;">{{ $lang->data['qty'] ?? 'QTY' }}</h6>
-                            <h6 class="heading1 heading-child" style="font-weight:bold; font-size:14px;">{{ $lang->data['total'] ?? 'Total' }}</h6>
+                            <div style="font-size: 12px; color: #888;">
+                            Service Name<br>
+                            <span style="display: block; font-size: 12px; color: #888;">اسم الخدمة</span>
+                            </div>
+                            <div style="font-size: 12px; color: #888;">
+                             QTY<br>
+                             <span style="display: block; font-size: 12px; color: #888;">الكمية</span>
+                            </div>
+                            <div style="font-size: 12px; color: #888;">
+                             Total<br>
+                             <span style="display: block; font-size: 12px; color: #888;">المجموع</span>
+                            </div>
                         </div>
                         @php
                         $qty = 0;
@@ -1796,13 +1901,19 @@
 
                         <div class="row-data">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['sub_total'] ?? 'Sub Total' }}:</h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Sub Total<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">المجموع الفرعي</span>
+                                </div>
                             </div>
                             <h5 class="my-0">{{ ($order->sub_total) }}</h5>
                         </div>
                         <div class="row-data">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['addon'] ?? 'Addon' }}:</h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Addon<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">الإضافات</span>
+                                </div>
                             </div>
                             <h5 class="my-0">
                                 {{ ($order->addon_total) }}
@@ -1810,30 +1921,39 @@
                         </div>
                         <div class="row-data">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['discount'] ?? 'Discount' }}:</h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Discount<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">الخصم</span>
+                                </div>
                             </div>
                             <h5 class="my-0">{{ ($order->discount) }}</h5>
                         </div>
                         @if($order->tax_type==2)
                         <div class="row-data">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['before_tax'] ?? 'Before Tax' }}
-                                    :</h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Before Tax<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">قبل الضريبة</span>
+                                </div>
                             </div>
                             <h5 class="my-0">{{ ($order->sub_total) }}</h5>
                         </div>
                         @endif
                         <div class="row-data">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['tax'] ?? 'Tax' }}
-                                    ({{ $order->tax_percentage }}%):</h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Tax ({{ $order->tax_percentage }}%)<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">الضريبة</span>
+                                </div>
                             </div>
                             <h5 class="my-0">{{ ($order->tax_amount) }}</h5>
                         </div>
                         <div class="row-data">
                             <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['gross_total'] ?? 'Gross Total' }}:
-                                </h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Gross Total<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">إجمالي المبلغ</span>
+                            </div>
                             </div>
                             <h5 class="my-0">{{ ($order->total) }}
                             </h5>
@@ -1843,12 +1963,23 @@
                                 @php
                                 $current_paid_amount = \App\Models\Payment::where('order_id', $order->id)->sum('received_amount');
                                 @endphp
-                                <h5 class="item-title">{{ $lang->data['paid_amount'] ?? 'Paid Amount' }}:
-                                </h5>
+                                <div style="font-size: 12px; color: #888;">
+                                 Paid Amount<br>
+                                 <span style="display: block; font-size: 12px; color: #888;">المبلغ المدفوع</span>
+                                </div>
                             </div>
                             <h5 class="my-0">{{ ($current_paid_amount) }}
                             </h5>
                         </div>
+                        <!-- Arabic Disclaimer -->
+                        <div class="text-center" style="margin-top: 20px; font-size: 12px; line-height: 1.5;">
+                        <p>
+                        الغسيل غير مسؤول عن أي عناصر غير مدرجة في نسخة فاتورة العميل. يحتفظ الغسيل بالحق في التخلص من الملابس التي لم يتم جمعها في غضون 30 يومًا المذكورة في الفاتورة. الغسيل غير مسئول عن فقدان الأشياء داخل القماش. بعد شهر واحد نحن لسنا مسؤولين عن البنود الخاصة بك.
+                        </p>
+                        <p>
+                        ملاحظة: يرجى جمع القماش الخاص بك في غضون 7 أيام شكرا لك ... قم  بالزيارة مرة أخرى
+                       </p>
+                       </div>
                         @php
                         $received_payment_row = \App\Models\Payment::where('order_id', $order->id)->sum('received_amount');
                         $received_amount = 0;

@@ -416,20 +416,119 @@
                 </div>
             </div>
             <div class="tw-flex tw-items-center tw-gap-2 tw-mt-1 tw-p-2 tw-w-full tw-h-14">
-                <button
+ <button
                     class="tw-px-2 tw-justify-center tw-font-semibold tw-py-2 tw-h-full bg-success-600 tw-rounded-md tw-text-white tw-flex tw-items-center tw-gap-1.5 tw-w-full tw-border-0 tw-shadow-md "
-                    data-bs-toggle="modal" data-bs-target="#payment">
+                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <span>{{ $lang->data['payment'] ?? 'Payment' }}</span>
                 </button>
-                <button
-                    class="tw-px-2 tw-justify-center tw-font-semibold tw-py-2 tw-h-full bg-info-600 tw-rounded-md tw-text-white tw-flex tw-items-center tw-gap-1.5 tw-w-full tw-border-0 tw-shadow-md "
-                    wire:click.prevent="save('cash')">
-                    <span>{{ $lang->data['cash'] ?? 'Cash' }}</span>
-                </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
+        <div class="modal-dialog modal-md modal-dialog modal-dialog-centered">
+            <div class="modal-content radius-16 bg-base">
+                <div class="modal-header py-16 px-24 border border-top-0 border-start-0 border-end-0">
+                    <h1 class="modal-title text-md" id="exampleModalLabel">{{ $lang->data['payment_details'] ?? 'Payment Details' }}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                @if ($order)
+                    <div class="modal-body p-24">
+                        <form action="#">
+                            <div class="row">   
+                                <div class="col-12">
+                                    <div class="">
+                                        <ul>
+                                            <li class="d-flex align-items-center gap-1 mb-12 tw-justify-between tw-w-full">
+                                                <span class="text-md fw-semibold text-primary-light">{{ $lang->data['customer'] ?? 'Customer' }} :</span>
+                                                <span class="text-secondary-light fw-medium">{{ $customer->name ?? '' }}</span>
+                                            </li>
+                                            <li class="d-flex align-items-center gap-1 mb-12 tw-justify-between ">
+                                                <span class="text-md fw-semibold text-primary-light"> {{ $lang->data['order_id'] ?? 'Order ID' }} :</span>
+                                                <span class="text-secondary-light fw-medium">{{ $order->order_number }}</span>
+                                            </li>
+                                            <li class="d-flex align-items-center gap-1 mb-12 tw-justify-between">
+                                                <span class="text-md fw-semibold text-primary-light">  {{ $lang->data['order_date'] ?? 'Order Date' }} :</span>
+                                                <span class="text-secondary-light fw-medium">{{ \Carbon\Carbon::parse($order->order_date)->format('d/m/Y') }}</span>
+                                            </li>
+                                            <li class="d-flex align-items-center gap-1 mb-12 tw-justify-between">
+                                                <span class="text-md fw-semibold text-primary-light">  {{ $lang->data['delivery_date'] ?? 'Delivery Date' }} :</span>
+                                                <span class="text-secondary-light fw-medium">{{ \Carbon\Carbon::parse($order->delivery_date)->format('d/m/Y') }}</span>
+                                            </li>
+                                            <li class="d-flex align-items-center gap-1 mb-12 tw-justify-between">
+                                                <span class="text-md fw-semibold text-primary-light"> {{ $lang->data['order_amount'] ?? 'Order Amount' }} :</span>
+                                                <span class="text-secondary-light fw-medium"> {{ getFormattedCurrency($order->total) }}</span>
+                                            </li>
+                                            <li class="d-flex align-items-center gap-1 mb-12 tw-justify-between">
+                                                <span class="text-md fw-semibold text-primary-light"> {{ $lang->data['paid_amount'] ?? 'Paid Amount' }} :</span>
+                                                <span class="text-secondary-light fw-medium"> {{ getFormattedCurrency($paid_amount) }}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-12 tw-my-6">
+                                    <hr>
+                                </div>
+                                <div class="col-12 mb-20 ">
+                                    <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">{{ $lang->data['paid_amount'] ?? 'Paid Amount' }} <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control radius-8" placeholder="{{ $lang->data['enter_amount'] ?? 'Enter Amount' }}" wire:model="paid_amount" >
+                                    @error('balance')
+                                        <span class="error text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-12 mb-20 ">
+                                    <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">{{ $lang->data['payment_type'] ?? 'Payment Type' }} <span class="text-danger">*</span></label>
+                                    <select  class="form-select radius-8" wire:model="payment_type">
+                                        <option value="">
+                                            {{ $lang->data['choose_payment_type'] ?? 'Choose Payment Type' }}
+                                        </option>
+                                        <option class="select-box" value="1">
+                                            {{ $lang->data['cash'] ?? 'Cash' }}
+                                        </option>
+                                        <option class="select-box" value="2">
+                                            {{ $lang->data['card'] ?? 'Card' }}
+                                        </option>
+                                        <option class="select-box" value="3">
+                                            {{ $lang->data['credit'] ?? 'Credit' }}
+                                        </option>
+                                    </select>
+                                    @error('payment_type')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-12 mb-20">
+                                    <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">{{ $lang->data['notes'] ?? 'Notes' }} </label>
+                                    <textarea class="form-control radius-8" placeholder="{{ $lang->data['enter_notes'] ?? 'Enter Notes' }}"  wire:model="notes"></textarea>
+                                    @error('notes')
+                                        <span class="error text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="d-flex align-items-start justify-content-end gap-3 mt-24">
+                                    <button data-bs-dismiss="modal" type="button" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8"> 
+                                    {{ $lang->data['cancel'] ?? 'Cancel' }}
+                                    </button>
+                                    <button wire:click.prevent="addPayment" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8"> 
+                                    {{ $lang->data['save'] ?? 'Save' }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+   
+@can('order_print')
+    <button
+        type="button"
+        onclick="window.open('{{ route('order.print', $id) }}', '_blank')"
+        class="tw-px-2 tw-justify-center tw-font-semibold tw-py-2 tw-h-full bg-info-600 tw-rounded-md tw-text-white tw-flex tw-items-center tw-gap-1.5 tw-w-full tw-border-0 tw-shadow-md"
+    >
+        <span>{{ $lang->data['print'] ?? 'Print' }}</span>
+    </button>
+@endcan
                 <button
                     class="tw-px-2 tw-justify-center tw-font-semibold tw-py-2 tw-h-full bg-primary-600 tw-rounded-md tw-text-white tw-flex tw-items-center tw-gap-1.5 tw-w-full tw-border-0 tw-shadow-md "
                     wire:click.prevent="save">
-                    <span>{{ $lang->data['save_print'] ?? 'Save & Print' }}</span>
+                    <span>{{ $lang->data['save'] ?? 'Save' }}</span>
                 </button>
                 <button
                     class="tw-px-2 tw-py-2.5 tw-bg-red-500 tw-rounded-md tw-text-white tw-h-full tw-flex tw-items-center tw-gap-1.5 tw-border-0 tw-shadow-md  "
@@ -442,6 +541,65 @@
                             d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z" />
                     </svg>
                 </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="addcustomer" tabindex="-1" aria-labelledby="addcustomerLabel" aria-hidden="true" wire:ignore.self>
+        <div class="modal-dialog modal-lg modal-dialog modal-dialog-centered">
+            <div class="modal-content radius-16 bg-base">
+                <div class="modal-header py-16 px-24 border border-top-0 border-start-0 border-end-0">
+                    <h1 class="modal-title text-md" id="addcustomerLabel">{{ $lang->data['add_new_customer'] ?? 'Add New Customer' }}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-24">
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-6 mb-20">
+                                <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">{{ $lang->data['customer_name'] ?? 'Customer Name' }} <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control radius-8" placeholder="{{ $lang->data['enter_customer_name'] ?? 'Enter Customer Name' }}" wire:model="name">
+                                @error('name')
+                                <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col-6 mb-20">
+                                <label for="phone" class="form-label fw-semibold text-primary-light text-sm mb-8">{{ $lang->data['phone_number'] ?? 'Phone Number' }} <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control radius-8" placeholder="{{ $lang->data['enter_phone_number'] ?? 'Enter Phone Number' }}" wire:model="phone">
+                                @error('phone')
+                                <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col-6 mb-20">
+                                <label for="email" class="form-label fw-semibold text-primary-light text-sm mb-8">{{ $lang->data['email'] ?? 'Email' }}</label>
+                                <input type="text" class="form-control radius-8" placeholder="{{ $lang->data['enter_email'] ?? 'Enter Email' }}" wire:model="email">
+                                @error('email')
+                                <span class="error text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col-6 mb-20">
+                                <label for="tax_number" class="form-label fw-semibold text-primary-light text-sm mb-8">{{ $lang->data['tax_number'] ?? 'Tax Number' }}</label>
+                                <input type="text" class="form-control radius-8" placeholder="{{ $lang->data['enter_tax_number'] ?? 'Enter Tax Number' }}" wire:model="tax_number">
+                            </div>
+                            <div class="col-12 mb-20">
+                                <label for="address" class="form-label fw-semibold text-primary-light text-sm mb-8">{{ $lang->data['address'] ?? 'Address' }}</label>
+                                <textarea class="form-control radius-8" placeholder="{{ $lang->data['enter_address'] ?? 'Enter Address' }}" wire:model="address"></textarea>
+                            </div>
+                            <div class="col-12 tw-mt-6">
+                                <div class="form-switch switch-primary d-flex align-items-center gap-3">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="switch1" checked wire:model="is_active">
+                                    <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="switch1">{{ $lang->data['is_active'] ?? 'Is Active' }} ?</label>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start justify-content-end gap-3 mt-24">
+                                <button type="reset" class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8" wire:click.prevent="$dispatch('closemodal')">
+                                    {{ $lang->data['cancel'] ?? 'Cancel' }}
+                                </button>
+                                <button type="submit" class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8" wire:click.prevent="store">
+                                    {{ $lang->data['save'] ?? 'Save' }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

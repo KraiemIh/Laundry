@@ -16,14 +16,14 @@ class OrderStatusScreen extends Component
     public function render()
     {
         $pending_orders = Order::where('status', 0)->latest();
-        $processing_orders = Order::where('status', 1)->latest();
-        $ready_orders = Order::where('status', 2)->latest();
+        $processing_orders = Order::where('status', 2)->latest();
+        $ready_orders = Order::where('status', 3)->latest();
         if (Auth::user()->user_type == 1) {
            
         } else {
             $pending_orders->where('created_by', Auth::user()->id)->where('status', 0);
-            $processing_orders->where('created_by', Auth::user()->id)->where('status', 1);
-            $ready_orders->where('created_by', Auth::user()->id)->where('status', 2);
+            $processing_orders->where('created_by', Auth::user()->id)->where('status', 2);
+            $ready_orders->where('created_by', Auth::user()->id)->where('status', 3);
         }
     
         switch($this->dateFilter){
@@ -75,20 +75,25 @@ class OrderStatusScreen extends Component
     {
         $orderz = Order::where('id', $order)->first();
         switch ($status) {
-            case 'processing':
+            case 'Pick-up':
                 $orderz->status = 1;
                 $orderz->save();
                 $message = sendOrderStatusChangeSMS($orderz->id, 1);
                 break;
-            case 'ready':
+            case 'processing':
                 $orderz->status = 2;
                 $orderz->save();
                 $message = sendOrderStatusChangeSMS($orderz->id, 2);
                 break;
+            case 'ready':
+                $orderz->status = 3;
+                $orderz->save();
+                $message = sendOrderStatusChangeSMS($orderz->id, 3);
+                break;
             case 'pending':
                 $orderz->status = 0;
                 $orderz->save();
-                $message = sendOrderStatusChangeSMS($orderz->id, 3);
+                $message = sendOrderStatusChangeSMS($orderz->id, 0);
                 break;
         }
 

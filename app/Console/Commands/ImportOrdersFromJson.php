@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Models\Customer;
 
 class ImportOrdersFromJson extends Command
 {
@@ -59,11 +60,23 @@ class ImportOrdersFromJson extends Command
 
                 // Map service to order type
                 $orderType = $this->mapServiceToOrderType($order['Service']);
+                $customer = Customer::where('email', $order['E-mail Address'])->first();
+                if (!$customer) {
 
+                $customer = Customer::create([
+                    'name' => $order['Name'] ?? 'Unknown Customer',
+                    'phone' => $order['Phone Number'] ?? '',
+                    'email' => $order['E-mail Address'] ?? null,
+                    'tax_number' => $order['Tax Number'] ?? null,
+                    'address' => $order['Address'] ?? '',
+                    'created_by' => 1, // Auth::user()->id si tu utilises l’authentification
+                    'is_active' => true,
+                ]);
+}
                 DB::table('orders')->insert([
                     'id' => $order['ID'],
                     'order_number' => $orderNumber,
-                    'customer_id' => null, // Always NULL
+                    'customer_id' => $customer->id,
                     'customer_name' => $order['Name'] ?? 'Unknown Customer',
                     'phone_number' => $order['Phone Number'] ?? '',
                     'address' => $order['Address'] ?? '',

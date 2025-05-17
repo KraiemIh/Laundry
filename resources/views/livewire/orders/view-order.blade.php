@@ -22,10 +22,10 @@
                             {{ $lang->data['order_id'] ?? 'Order ID' }} : <span class="tw-font-medium text-primary-light">#{{ $order->order_number }}</span> 
                         </div>
                         <div class="text-neutral-600">
-                            {{ $lang->data['order_date'] ?? 'Order Date' }} : <span class="tw-font-medium text-primary-light">{{ \Carbon\Carbon::parse($order->order_date)->format('d/m/Y') }}</span> 
+                            {{ $lang->data['Pick up Date'] ?? 'Pick up Date' }} : <span class="tw-font-medium text-primary-light">{{ \Carbon\Carbon::parse($order->order_date)->format('d/m/Y') }}</span> 
                         </div>
                         <div class="text-neutral-600">
-                            {{ $lang->data['delivery_time'] ?? 'Delivery Date' }} : <span class="tw-font-medium text-primary-light">{{ \Carbon\Carbon::parse($order->delivery_time)->format('H:i') }}</span> 
+                            {{ $lang->data['Pick up time'] ?? 'Pick up time' }} : <span class="tw-font-medium text-primary-light">{{ \Carbon\Carbon::parse($order->delivery_time)->format('H:i') }}</span> 
                         </div>
                         <div class="text-neutral-600">
                             {{ $lang->data['delivery_date'] ?? 'Delivery Date' }} : <span class="tw-font-medium text-primary-light">{{ \Carbon\Carbon::parse($order->delivery_date)->format('d/m/Y') }}</span> 
@@ -36,26 +36,42 @@
                             </div>
                             <div class="dropdown">
                                 @can('order_status_change')
-                                @if($order->status != 3 && $order->status != 4)
+                                @if($order->status != 4 && $order->status != 5)
                                 <button class="btn btn-primary-600 not-active tw-py-1 tw-px-2 dropdown-toggle toggle-icon" type="button" data-bs-toggle="dropdown" aria-expanded="false"> {{ getOrderStatus($order->status) }} </button>
-                                <ul class="dropdown-menu" style="">
-                                  <li><a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900" href="#" wire:click.prevent="changeStatus(1)">{{ $lang->data['processing'] ?? 'Processing' }}</a></li>
-                                  <li><a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900" href="#" wire:click.prevent="changeStatus(2)">{{ $lang->data['ready_to_deliver'] ?? 'Ready To Deliver' }}</a></li>
+ <ul class="dropdown-menu" style="">
+                                <li><a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900" href="#" wire:click.prevent="changeStatus(0)">{{ $lang->data['pending'] ?? 'pending' }}</a></li>
+
+                                  <li><a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900" href="#" wire:click.prevent="changeStatus(1)">{{ $lang->data['Pick-up'] ?? 'Pick-up' }}</a></li>
+                                  
+                                  <li>
+                                        @if($order->total == 0)
+                                        <button disabled class="dropdown-item px-16 py-8 rounded tw-text-neutral-400  disabled:tw-bg-transparent" href="#" >
+                                            {{ $lang->data['processing'] ?? 'Processing' }} <span class="text-danger text-xs">({{'Add itmes' }})</span>
+                                        </button>
+                                        @else
+                                        <button  class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900" href="#" wire:click.prevent="changeStatus(2)">
+                                            {{ $lang->data['processing'] ?? 'Processing' }} 
+                                        </button>
+                                        @endif
+                                    </li>
+
+
+                                  <li><a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900" href="#" wire:click.prevent="changeStatus(3)">{{ $lang->data['ready_to_deliver'] ?? 'Ready To Deliver' }}</a></li>
                                   <li>
                                         @if($balance > 0)
                                         <button disabled class="dropdown-item px-16 py-8 rounded tw-text-neutral-400  disabled:tw-bg-transparent" href="#" >
                                             {{ $lang->data['delivered'] ?? 'Delivered' }} <span class="text-danger text-xs">({{ $lang->data['payment_incomplete'] ?? 'Payment Incomplete' }})</span>
                                         </button>
                                         @else
-                                        <button  class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900" href="#" wire:click.prevent="changeStatus(3)">
+                                        <button  class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900" href="#" wire:click.prevent="changeStatus(4)">
                                             {{ $lang->data['delivered'] ?? 'Delivered' }} 
                                         </button>
                                         @endif
                                     </li>
-                                  <li><a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900" href="#" wire:click.prevent="changeStatus(4)">{{ $lang->data['returned'] ?? 'Returned' }}</a></li>
+                                  <li><a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900" href="#" wire:click.prevent="changeStatus(5)">{{ $lang->data['returned'] ?? 'Returned' }}</a></li>
                                 </ul>
                                 @else
-                                    @if($order->status == 4)
+                                    @if($order->status == 5)
                                     <div class="text-danger">
                                         {{ $lang->data['returned'] ?? 'Returned' }}
                                     </div>
@@ -217,53 +233,62 @@
             </div>
         </div>
         <div class="card h-100 p-0 radius-12 lg:tw-w-[24rem]  tw-w-full tw-shrink-0">
-            <div class="card-body p-24">
-                @if ($orderaddons)
-                    @if (count($orderaddons) > 0)
-                    <div class="tw-text-xl tw-font-medium">{{ $lang->data['service_addons'] ?? 'Service Addons' }}</div>
-                    @foreach ($orderaddons as $item)
-                        <div class="tw-flex tw-flex-col bg-gradient-success card tw-mt-2">
-                            <div class="card-body">
-                                <div class="tw-flex tw-items-center  tw-text-sm tw-gap-4">
-                                    <div class=" tw-relative tw-items-center tw-flex tw-flex-col ">
-                                    <iconify-icon icon="tabler:puzzle" class="menu-icon tw-text-xl"></iconify-icon>
-                                    </div>
-                                    <div class="tw-flex tw-flex-col">
-                                        <div class="tw-font-medium">{{ $item->addon_name }} </div>
-                                        <div class="">{{ getFormattedCurrency($item->addon_price) }}</div>
-                                    </div>
-                                </div>
+             <div class="card-body p-24">
+        @if ($orderaddons && count($orderaddons) > 0)
+            <div class="tw-text-xl tw-font-medium">{{ $lang->data['service_addons'] ?? 'Service Addons' }}</div>
+            @foreach ($orderaddons as $item)
+                <div class="tw-flex tw-flex-col bg-gradient-success card tw-mt-2">
+                    <div class="card-body">
+                        <div class="tw-flex tw-items-center tw-text-sm tw-gap-4">
+                            <div class="tw-relative tw-items-center tw-flex tw-flex-col">
+                                <iconify-icon icon="tabler:puzzle" class="menu-icon tw-text-xl"></iconify-icon>
+                            </div>
+                            <div class="tw-flex tw-flex-col">
+                                <div class="tw-font-medium">{{ $item->addon_name }}</div>
+                                <div>{{ getFormattedCurrency($item->addon_price) }}</div>
                             </div>
                         </div>
-                    @endforeach
-                    @endif
-                @endif
-                @can('payment_create')
-                <div class="tw-text-xl tw-font-medium tw-pt-6">{{ $lang->data['payments'] ?? 'Payments' }}</div>
-                @foreach ($payments as $item)
+                    </div>
+                </div>
+            @endforeach
+        @endif
+
+        @can('payment_create')
+            <div class="tw-text-xl tw-font-medium tw-pt-6">{{ $lang->data['payments'] ?? 'Payments' }}</div>
+
+            @foreach ($payments as $item)
                 <div class="tw-flex tw-items-center tw-pt-2 tw-text-sm tw-gap-4">
-                    <div class=" tw-relative tw-items-center tw-flex tw-flex-col tw-translate-y-1">
+                    <div class="tw-relative tw-items-center tw-flex tw-flex-col tw-translate-y-1">
                         <iconify-icon icon="tabler:target" class="menu-icon"></iconify-icon>
                         <div class="tw-top-[100%] tw-left-[6px] tw-h-6 tw-w-[2px] tw-bg-neutral-300"></div>
                     </div>
                     <div class="tw-flex tw-flex-col">
                         <div class="tw-font-medium">{{ getFormattedCurrency($item->received_amount) }}</div>
-                        <div class="tw-text-xs tw-font-light tw-mt-1">{{ Carbon\Carbon::parse($item->payment_date)->format('d/m/Y') }} <span class="tw-font-bold">[{{ getpaymentMode($item->payment_type) }}]</span></div>
+                        <div class="tw-text-xs tw-font-light tw-mt-1">
+                            {{ Carbon\Carbon::parse($item->payment_date)->format('d/m/Y') }} 
+                            <span class="tw-font-bold">[{{ getpaymentMode($item->payment_type) }}]</span>
+                        </div>
                     </div>
                 </div>
-                @endforeach
-                @if ($balance > 0)
-                    @if($order->status != 4)
-                        <button data-bs-toggle="modal" data-bs-target="#exampleModal"  type="button" class="btn btn-outline-success-600 radius-8 px-20 py-11 tw-mt-6 tw-w-full" >{{ $lang->data['add_payment'] ?? 'Add Payment' }}</button>
-                    @endif
-                @else
-                <button type="button" class="btn btn-outline-neutral-600 radius-8 px-20 py-11 tw-mt-6 tw-w-full" disabled>{{ $lang->data['fully_paid'] ?? 'Fully Paid' }}</button>
-                @endif
-                @endcan
-                @can('order_print')
-                <a href="{{url('admin/orders/print/'.$order->id)}}" target="_blank" type="button" class="btn btn-outline-warning-600 radius-8 px-20 py-11 tw-mt-3 tw-w-full">{{ $lang->data['print_invoice'] ?? 'Print Invoice' }}</a>
-                @endcan()
-            </div>
+            @endforeach
+
+            @if ($balance == 0)
+                <button type="button" class="btn btn-outline-neutral-600 radius-8 px-20 py-11 tw-mt-6 tw-w-full" disabled>
+                    {{ $lang->data['fully_paid'] ?? 'Fully Paid' }}
+                </button>
+            @elseif ($balance > 0 && $order->status != 5)
+                <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-outline-success-600 radius-8 px-20 py-11 tw-mt-6 tw-w-full">
+                    {{ $lang->data['add_payment'] ?? 'Add Payment' }}
+                </button>
+            @endif
+        @endcan
+
+        @can('order_print')
+            <a href="{{ url('admin/orders/print/'.$order->id) }}" target="_blank" type="button" class="btn btn-outline-warning-600 radius-8 px-20 py-11 tw-mt-3 tw-w-full">
+                {{ $lang->data['print_invoice'] ?? 'Print Invoice' }}
+            </a>
+        @endcan
+    </div>
         </div>
     </div>
   
@@ -333,16 +358,10 @@
                                             {{ $lang->data['cash'] ?? 'Cash' }}
                                         </option>
                                         <option class="select-box" value="2">
-                                            {{ $lang->data['upi'] ?? 'UPI' }}
+                                            {{ $lang->data['card'] ?? 'card' }}
                                         </option>
                                         <option class="select-box" value="3">
-                                            {{ $lang->data['card'] ?? 'Card' }}
-                                        </option>
-                                        <option class="select-box" value="4">
-                                            {{ $lang->data['cheque'] ?? 'Cheque' }}
-                                        </option>
-                                        <option class="select-box" value="5">
-                                            {{ $lang->data['bank_transfer'] ?? 'Bank Transfer' }}
+                                            {{ $lang->data['credit'] ?? 'Credit' }}
                                         </option>
                                     </select>
                                     @error('payment_type')

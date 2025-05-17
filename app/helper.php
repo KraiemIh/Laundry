@@ -45,11 +45,11 @@ function getpaymentMode($type)
             case 1:
                 return $lang->data['cash'] ?? 'CASH';
             case 2:
-                return $lang->data['upi'] ?? 'UPI';
+                return $lang->data['card'] ?? 'Card';
             case 3:
-                return $lang->data['card'] ?? 'CARD';
+                return $lang->data['credit'] ?? 'Credit';
             case 4:
-                return $lang->data['cheque'] ?? 'CHEQUE';
+                return $lang->data['credit'] ?? 'Credit';
             case 5:
                 return $lang->data['bank_transfer'] ?? 'BANK TRANSFER';
             default:
@@ -60,11 +60,11 @@ function getpaymentMode($type)
         case 1:
             return 'CASH';
         case 2:
-            return 'UPI';
-        case 3:
             return 'CARD';
+        case 3:
+            return 'CREDIT';
         case 4:
-            return 'CHEQUE';
+            return 'CREDIT';
         case 5:
             return 'BANK TRANSFER';
         default:
@@ -127,12 +127,14 @@ function getOrderStatus($status, $preventlang = null)
             case 0:
                 return 'Pending';
             case 1:
-                return 'Processing';
+                return 'Pick-up';
             case 2:
-                return 'Ready To Deliver';
+                return 'Processing';
             case 3:
-                return 'Delivered';
+                return 'Ready To Deliver';
             case 4:
+                return 'Delivered';
+            case 5:
                 return 'Returned';
         }
     } else {
@@ -142,12 +144,14 @@ function getOrderStatus($status, $preventlang = null)
             case 0:
                 return $lang->data['pending'] ?? 'Pending';
             case 1:
-                return $lang->data['processing'] ?? 'Processing';
+                return $lang->data['Pick-up'] ?? 'Pick-up';
             case 2:
-                return $lang->data['ready_to_deliver'] ?? 'Ready To Deliver';
+                return $lang->data['processing'] ?? 'Processing';
             case 3:
-                return $lang->data['delivered'] ?? 'Delivered';
+                return $lang->data['ready_to_deliver'] ?? 'Ready To Deliver';
             case 4:
+                return $lang->data['delivered'] ?? 'Delivered';
+            case 5:
                 return $lang->data['returned'] ?? 'Returned';
         }
     }

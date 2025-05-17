@@ -41,10 +41,10 @@ class DailyReport extends Component
     /* report section */ 
     public function report(){
              $this->new_order = \App\Models\Order::whereDate('order_date',$this->today)->count();
-             $this->delivered_orders = \App\Models\Order::whereDate('order_date',$this->today)->where('status',3)->count();
+             $this->delivered_orders = \App\Models\Order::whereDate('order_date',$this->today)->where('status',4)->count();
              $this->total_payment = \App\Models\Payment::whereDate('payment_date',$this->today)->sum('received_amount');
              $this->total_expense = \App\Models\Expense::whereDate('expense_date',$this->today)->sum('expense_amount');
-             $this->total_sales = \App\Models\Order::whereDate('order_date',$this->today)->where('status',3)->sum('total');
+             $this->total_sales = \App\Models\Order::whereDate('order_date',$this->today)->where('status',4)->sum('total');
     }
 
         /* download report */

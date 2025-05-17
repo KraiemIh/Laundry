@@ -69,33 +69,46 @@
                     </tbody>
                 </table>
                 @if($hasMorePages)
-                <div x-data="{
-                                init () {
-                                    let observer = new IntersectionObserver((entries) => {
-                                        entries.forEach(entry => {
-                                            if (entry.isIntersecting) {
-                                                @this.call('loadCustomers')
-                                                console.log('loading...')
-                                            }
-                                        })
-                                    }, {
-                                        root: null
-                                    });
-                                    observer.observe(this.$el);
-                                }
-                            }" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-4">
-                    <div class="text-center pb-2 d-flex justify-content-center align-items-center">
-                    {{ $lang->data['loading'] ?? 'Loading...' }}
-                        <div class="spinner-grow d-inline-flex mx-2 text-primary" role="status">
-                            <span class="visually-hidden"> {{ $lang->data['loading'] ?? 'Loading...' }}</span>
-                        </div>
-                    </div>
-                </div>
-                @endif
+    <div x-data="{
+        init() {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Check if $wire is available
+                            if (typeof $wire !== 'undefined') {
+                                $wire.loadCustomers();
+                                console.log('loading...');
+                            } else {
+                                console.error('Livewire not initialized');
+                            }
+                        }
+                    });
+                },
+                { root: null }
+            );
+
+            observer.observe(this.$el);
+
+            // Cleanup observer when component is removed
+            this.$watch('$el.isConnected', isConnected => {
+                if (!isConnected) {
+                    observer.disconnect();
+                }
+            });
+        }
+    }" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-4">
+        <div class="text-center pb-2 d-flex justify-content-center align-items-center">
+            {{ $lang->data['loading'] ?? 'Loading...' }}
+            <div class="spinner-grow d-inline-flex mx-2 text-primary" role="status">
+                <span class="visually-hidden">{{ $lang->data['loading'] ?? 'Loading...' }}</span>
             </div>
-            @if(count($customers) == 0)
-            <x-empty-item />
-            @endif
+        </div>
+    </div>
+@endif
+@if(count($customers) == 0)
+    <x-empty-item />
+@endif
         </div>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>

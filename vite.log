@@ -1,0 +1,362 @@
+
+> build
+> vite build --watch
+
+vite v6.2.2 building for production...
+
+watching for file changes...
+
+build started...
+transforming...
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 59 modules transformed.
+rendering chunks...
+computing gzip size...
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 2107ms.
+
+> build
+> vite build --watch
+
+vite v6.2.2 building for production...
+
+watching for file changes...
+
+build started...
+transforming...
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+✓ 59 modules transformed.
+rendering chunks...
+computing gzip size...
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 1347ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 1625ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 1978ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 1989ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 2101ms.
+
+build started...
+✓ 0 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 475ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 553ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 2366ms.
+
+build started...
+✓ 0 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 735ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 1660ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 669ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 555ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 515ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 602ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 595ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 493ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 677ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 2090ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 956ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 675ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 695ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 629ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 2525ms.
+
+build started...
+✓ 0 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 929ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 1672ms.
+
+build started...
+✓ 0 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 512ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 636ms.
+
+build started...
+✓ 0 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 438ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 571ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 2240ms.
+
+build started...
+✓ 0 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-D2aWKcje.css   16.72 kB │ gzip:  3.99 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 635ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 2002ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 683ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 515ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 509ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 539ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 513ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 597ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 581ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 681ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 680ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 596ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 3753ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 789ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 535ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 1361ms.
+
+build started...
+✓ 1 modules transformed.
+public/build/manifest.json              0.27 kB │ gzip:  0.15 kB
+public/build/assets/app-DvJdsEug.css   16.81 kB │ gzip:  4.00 kB
+public/build/assets/app-LFdpIMUT.js   117.10 kB │ gzip: 37.05 kB
+built in 668ms.
