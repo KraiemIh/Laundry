@@ -21,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+     Schema::defaultStringLength(191);
+
         try {
             Permission::get()->map(function ($permission) {
                 Gate::define($permission->name, function ($user) use ($permission) {
