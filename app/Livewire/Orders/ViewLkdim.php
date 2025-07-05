@@ -35,7 +35,7 @@ class ViewOrder extends Component
                 $this->current_delivery_date = \Carbon\Carbon::parse($this->order->delivery_date)->toDateString();
             }
         } else {
-            $this->order = Order::where('id',$id)->first();
+            $this->order = Order::where('created_by',Auth::user()->id)->where('id',$id)->first();
             if($this->order) {
                 $this->current_delivery_date = \Carbon\Carbon::parse($this->order->delivery_date)->toDateString();
                 }
@@ -82,7 +82,7 @@ class ViewOrder extends Component
             $this->store_email = $store_email;
         }
         $this->balance = $this->order->total -  Payment::where('order_id',$this->order->id)->sum('received_amount');
-        $this->paid_amount = $this->order->total -$this->balance;
+        $this->paid_amount = $this->order->total -$this->balance;;
         if(session()->has('selected_language'))
         {   /* session has selected language */
             $this->lang = Translation::where('id',session()->get('selected_language'))->first();
@@ -94,17 +94,17 @@ class ViewOrder extends Component
     /* add the payment */
     public function addPayment()
     {
-        if($this->order->status == 5)
+        if($this->order->status == 4)
         {
             return 0;
         }
         $this->validate([
-            'paid_amount_input'=> 'required',
+  'paid_amount_input'=> 'required',
             'paid_amount'   => 'required',
             'payment_type'  => 'required',
         ]);
         /* if paid amount > balance */
-     /*   if($this->paid_amount != 0)
+      /*  if($this->paid_amount > $this->balance)
         {
             $this->addError('payment_type','Amount cannot be greater than balance');
             return 0;
@@ -125,7 +125,7 @@ class ViewOrder extends Component
         $this->paid_amount = $this->order->total- $this->balance;
         $this->notes = '';
        // $this->payment_type = '';
-$this->reset(['paid_amount_input', 'notes']);
+$this->reset(['paid_amount_input', 'payment_type', 'notes']);
         $this->dispatch('closemodal');
         $this->dispatch(
             'alert', ['type' => 'success',  'message' => 'Payment Successfully Added!']);

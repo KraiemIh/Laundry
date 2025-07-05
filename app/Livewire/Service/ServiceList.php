@@ -36,17 +36,38 @@ class ServiceList extends Component
     /* delete the service */
     public function delete($id)
     {
-        try{
-            $service = Service::where('id',$id)->delete();
-            ServiceDetail::where('service_id',$id)->delete();
-            $this->services = Service::latest()->get();
-        }
-        catch(\Exception $e)
-        {
-            $this->dispatch(
-                'alert', ['type' => 'error',  'message' => 'Cannot Delete Service List!']);
-        }
+    try {
+        // Vérifie si le service existe
+        $service = Service::findOrFail($id);
+
+        // Supprime d'abord les détails liés
+        ServiceDetail::where('service_id', $id)->delete();
+
+        // Supprime ensuite le service
+        $service->delete();
+
+        // Rafraîchir la liste des services
+        $this->services = Service::latest()->get();
+
+        // Message de succès
+        $this->dispatch(
+            'alert', ['type' => 'success', 'message' => 'Service supprimé avec succès.']
+        );
+    } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+        // Cas où le service n'existe pas
+        $this->dispatch(
+            'alert', ['type' => 'error', 'message' => 'Service introuvable !']
+        );
+    } catch (\Exception $e) {
+        // Log l’erreur pour débogage
+        logger()->error("Erreur suppression service ID $id : " . $e->getMessage());
+
+        // Message d'erreur générique
+        $this->dispatch(
+            'alert', ['type' => 'error', 'message' => 'Impossible de supprimer le service.']
+        );
     }
+}
     /* process while update the content */
     public function updated($name,$value)
     {   /* if the updated element is search_query */

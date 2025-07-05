@@ -33,7 +33,7 @@
                             <td>{{$loop->index + 1}}</td>
                             <td class="">{{$row->name}}</td>
                             <td class="">
-                                <p>{{getCountryCode()}}{{ (int)$row->phone }}</p>
+                                <p>{{ (int)$row->phone }}</p>
                                 <p>{{ $row->email }}</p>
                             </td>
                             <td class="">

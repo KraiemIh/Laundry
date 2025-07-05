@@ -467,8 +467,8 @@
                                 </div>
                                 <div class="col-12 mb-20 ">
                                     <label for="name" class="form-label fw-semibold text-primary-light text-sm mb-8">{{ $lang->data['paid_amount'] ?? 'Paid Amount' }} <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control radius-8" placeholder="{{ $lang->data['enter_amount'] ?? 'Enter Amount' }}" wire:model="paid_amount" >
-                                    @error('balance')
+                                                                        <input type="text" class="form-control radius-8" placeholder="{{ $lang->data['enter_amount'] ?? 'Enter Amount' }}" wire:model="paid_amount_input" required>
+                                    @error('paid_amount_input')
                                         <span class="error text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -754,5 +754,12 @@
             shown: false,
             detached: false
         }));
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        Livewire.on('reloadPage', () => {
+            window.location.reload();
+        });
     });
 </script>

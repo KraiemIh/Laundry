@@ -21,10 +21,9 @@ class OrderStatusScreen extends Component
         if (Auth::user()->user_type == 1) {
            
         } else {
-            $pending_orders->where('created_by', Auth::user()->id)->where('status', 0);
-            $processing_orders->where('created_by', Auth::user()->id)->where('status', 2);
-            $ready_orders->where('created_by', Auth::user()->id)->where('status', 3);
-        }
+                   $pending_orders = Order::where('status', 0)->latest();
+        $processing_orders = Order::where('status', 2)->latest();
+        $ready_orders = Order::where('status', 3)->latest(); }
     
         switch($this->dateFilter){
             case 'today':

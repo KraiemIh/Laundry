@@ -26,7 +26,7 @@ class PosScreen extends Component
 {
     public $services, $search_query, $order_id,$id=1, $inputs = [], $selservices = [], $customer, $date, $delivery_date,$delivery_time, $discount,$status, $paid_amount, $payment_type = 1;
     public $payment_notes, $service_types, $service, $inputi, $prices = [], $selling_price = [], $quantity = [], $selected_type = [], $addons, $selected_addons = [], $colors = [];
-    public $customer_name, $customer_phone, $email, $tax_no, $address, $selected_customer, $customers, $customer_query, $is_active = 1;
+    public $customer_name,$paid_amount_input, $customer_phone, $email, $tax_no, $address, $selected_customer, $customers, $customer_query, $is_active = 1;
    // public  $name, $tax_number, $phone, $search, $lang, $customer;
     public $name, $tax_number, $phone, $search;
     public $total, $sub_total, $addon_total, $tax_percent, $tax, $balance, $flag = 0, $lang,$taxamount;
@@ -62,6 +62,8 @@ class PosScreen extends Component
         {
             $this->order = Order::whereId($id)->firstOrFail();
             $payments = Payment::where('order_id', $this->order->id)->get();
+             $this->balance = $this->order->total -  Payment::where('order_id',$this->order->id)->sum('received_amount');
+        $this->paid_amount = $this->order->total -$this->balance;
             foreach($payments as $payment){
                 array_push($this->payments,[
                     'payment_type' => $payment->payment_type,
@@ -438,12 +440,13 @@ class PosScreen extends Component
     }
 
        public function addPayment()
-    {
-        if($this->order->status == 4)
+     {
+        if($this->order->status == 5)
         {
             return 0;
         }
         $this->validate([
+            'paid_amount_input'=> 'required',
             'paid_amount'   => 'required',
             'payment_type'  => 'required',
         ]);
@@ -461,14 +464,15 @@ class PosScreen extends Component
             'order_id'  => $this->order->id,
             'payment_type'  => $this->payment_type,
             'financial_year_id' => getFinancialYearId(),
-            'received_amount'   => $this->paid_amount,
+            'received_amount'   => $this->paid_amount_input,
             'created_by'    => Auth::user()->id,
         ]);
         $this->payments = Payment::where('order_id',$this->order->id)->get();
         $this->balance = $this->order->total -  Payment::where('order_id',$this->order->id)->sum('received_amount');
-        $this->paid_amount = $this->balance;
+        $this->paid_amount = $this->order->total- $this->balance;
         $this->notes = '';
        // $this->payment_type = '';
+$this->reset(['paid_amount_input', 'payment_type', 'notes']);
         $this->dispatch('closemodal');
         $this->dispatch(
             'alert', ['type' => 'success',  'message' => 'Payment Successfully Added!']);
@@ -571,6 +575,8 @@ class PosScreen extends Component
                 OrderDetail::whereOrderId($this->order->id)->delete();
                 OrderAddonDetail::whereOrderId($this->order->id)->delete();
                 Payment::whereOrderId($this->order->id)->delete();
+                    $this->dispatch('reloadPage');
+
             }
             else{
                 $order = Order::create([

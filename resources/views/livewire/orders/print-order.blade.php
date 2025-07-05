@@ -812,14 +812,7 @@
                         $inline_balance = $inline_invoice_amount- $inline_payment;
                         @endphp
                         @if ($inline_balance != 0)
-                        <div class="row-data">
-                            <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['customer_balance'] ?? 'Customer Balance' }}:
-                                </h5>
-                            </div>
-                            <h5 class="my-5">
-                                @if ($inline_balance < 0) {{ getFormattedCurrency($inline_balance * -1) }} {{ 'Cr' }} @else {{ getFormattedCurrency($inline_balance) }} {{ 'Dr' }} @endif </h5>
-                        </div>
+                        
                         @endif
                         @endif
                         <hr>
@@ -1394,14 +1387,7 @@
                         $inline_balance = $inline_invoice_amount- $inline_payment;
                         @endphp
                         @if ($inline_balance != 0)
-                        <div class="row-data">
-                            <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['customer_balance'] ?? 'Customer Balance' }}:
-                                </h5>
-                            </div>
-                            <h5 class="my-5">
-                                @if ($inline_balance < 0) {{ getFormattedCurrency($inline_balance * -1) }} {{ 'Cr' }} @else {{ getFormattedCurrency($inline_balance) }} {{ 'Dr' }} @endif </h5>
-                        </div>
+                        
                         @endif
                         @endif
                         <hr>
@@ -2007,14 +1993,6 @@
                         $inline_balance = $inline_invoice_amount- $inline_payment;
                         @endphp
                         @if ($inline_balance != 0)
-                        <div class="row-data">
-                            <div class="item-info">
-                                <h5 class="item-title">{{ $lang->data['customer_balance'] ?? 'Customer Balance' }}:
-                                </h5>
-                            </div>
-                            <h5 class="my-0">
-                                @if ($inline_balance < 0) {{ ($inline_balance * -1) }} {{ 'Cr' }} @else {{ ($inline_balance) }} {{ 'Dr' }} @endif </h5>
-                        </div>
                         @endif
                         @endif
                         <hr>

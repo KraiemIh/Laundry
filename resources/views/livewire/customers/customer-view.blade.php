@@ -68,7 +68,7 @@
                             </div>
                             <div class="flex-grow-1">
                                 <h6 class="text-md mb-0 fw-normal">{{ $lang->data['phone_number'] ?? 'Phone Number' }}</h6>
-                                <span class="text-sm text-secondary-light fw-normal">{{getCountryCode()}} {{$customer->phone ? $customer->phone : '-'}}</span>
+                                <span class="text-sm text-secondary-light fw-normal">{{$customer->phone ? $customer->phone : '-'}}</span>
                             </div>
                         </div>
                         <div class="d-flex align-items-center gap-12">

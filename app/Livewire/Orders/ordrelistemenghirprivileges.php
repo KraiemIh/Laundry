@@ -55,7 +55,7 @@ class OrdersList extends Component
         if (Auth::user()->user_type == 1) {
             $ordersQuery =  \App\Models\Order::orderBy('order_number','DESC');
         } else {
-    $ordersQuery =  \App\Models\Order::orderBy('order_number','DESC');
+            $ordersQuery =  \App\Models\Order::where('created_by', Auth::user()->id);
         }
 
         /* if the updated element is search_query */
@@ -292,13 +292,14 @@ class OrdersList extends Component
                         ->orderBy('order_number','DESC')
                         ->cursorPaginate(10, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor));
                 } else {
-                $orders = \App\Models\Order::where('order_number', 'like', '%' . $this->search_query . '%')
+                    $orders = \App\Models\Order::where('created_by', Auth::user()->id)->where('order_number', 'like', '%' . $this->search_query . '%')
                         ->orwhere('customer_name', 'like', '%' . $this->search_query . '%')
                         ->orwhere('phone_number', 'like', '%' . $this->search_query . '%')
                         ->orwhere('address', 'like', '%' . $this->search_query . '%')
                         ->where('status', $this->order_filter)
                         ->orderBy('order_number','DESC')
-                        ->cursorPaginate(10, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor)); }
+                        ->cursorPaginate(10, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor));
+                }
                 return $orders;
             } else {
                 if (Auth::user()->user_type == 1) {
@@ -309,12 +310,13 @@ class OrdersList extends Component
                         ->orderBy('order_number','DESC')
                         ->cursorPaginate(10, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor));
                 } else {
-                 $orders = \App\Models\Order::where('order_number', 'like', '%' . $this->search_query . '%')
+                    $orders = \App\Models\Order::where('created_by', Auth::user()->id)->where('order_number', 'like', '%' . $this->search_query . '%')
                         ->orwhere('customer_name', 'like', '%' . $this->search_query . '%')
                         ->orwhere('phone_number', 'like', '%' . $this->search_query . '%')
                         ->orwhere('address', 'like', '%' . $this->search_query . '%')
                         ->orderBy('order_number','DESC')
-                        ->cursorPaginate(10, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor));}
+                        ->cursorPaginate(10, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor));
+                }
                 return $orders;
             }
         } else {
@@ -326,9 +328,10 @@ class OrdersList extends Component
                         ->orderBy('order_number','DESC')
                         ->cursorPaginate(10, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor));
                 } else {
-                     $orders = \App\Models\Order::where('status', $this->order_filter)
+                    $orders = \App\Models\Order::where('created_by', Auth::user()->id)->where('status', $this->order_filter)
                         ->orderBy('order_number','DESC')
-                        ->cursorPaginate(10, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor));}
+                        ->cursorPaginate(10, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor));
+                }
 
                 return $orders;
             } elseif ($this->paid_filter || $this->paid_filter != '') {
@@ -339,9 +342,10 @@ class OrdersList extends Component
                         ->orderBy('order_number','DESC')
                         ->cursorPaginate(10, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor));
                 } else {
-                                    $orders = \App\Models\Order::where('status', $this->order_filter)
+                    $orders = \App\Models\Order::where('created_by', Auth::user()->id)->where('status', $this->order_filter)
                         ->orderBy('order_number','DESC')
-                        ->cursorPaginate(10, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor));}
+                        ->cursorPaginate(10, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor));
+                }
 
                 return $orders;
             } else {
@@ -349,8 +353,9 @@ class OrdersList extends Component
                     $orders = \App\Models\Order::orderBy('order_number','DESC')
                         ->cursorPaginate(10, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor));
                 } else {
-                                   $orders = \App\Models\Order::orderBy('order_number','DESC')
-                        ->cursorPaginate(10, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor)); }
+                    $orders = \App\Models\Order::where('created_by', Auth::user()->id)->orderBy('order_number','DESC')
+                        ->cursorPaginate(10, ['*'], 'cursor', Cursor::fromEncoded($this->nextCursor));
+                }
 
 
                 return $orders;

@@ -50,7 +50,7 @@
                             </td>
                             <td class="">
                                 <p>{{ $item->customer_name ?? ($lang->data['walk_in_customer'] ?? 'Walk In Customer') }}</p>
-                                <p>{{$item->phone_number ? getCountryCode() : ''}}{{$item->phone_number ? (int)$item->phone_number : ''}}</p>
+                                <p>{{$item->phone_number ? (int)$item->phone_number : ''}}</p>
                             @if(!empty($item->address))
                                 <p>{{ $item->address }}</p>
                             @else
@@ -104,25 +104,24 @@
         {{ $lang->data['paid_amount'] ?? 'Paid Amount' }} : 
         <span class="tw-font-medium text-primary-light">{{ getFormattedCurrency($current_paid_amount) }}</span> 
     </div>
+ 	@php
+    $isFullyPaid = $item->total == $current_paid_amount && $item->total > 0;
+    $isUnpaid = ($item->total > $current_paid_amount || ($item->total == 0 && $current_paid_amount == 0)) && $item->status != 4;
+@endphp
 
-    @php
-        $isFullyPaid = $item->total == $current_paid_amount;
-        $isUnpaid = $item->total > $current_paid_amount;
-    @endphp
-
-    @if ($isFullyPaid)
-        <div class="tw-mt-1">
-            <button type="button" class="btn rounded-pill btn-neutral-300 text-neutral-600 radius-8 tw-text-xs tw-py-1 tw-px-2">
-                {{ $lang->data['fully_paid'] ?? 'Fully Paid' }}
-            </button>
-        </div>
-    @elseif ($isUnpaid && $item->status != 4)
-        <div class="tw-mt-1">
-            <button type="button" class="btn rounded-pill btn-success-100 text-success-600 radius-8 tw-text-xs tw-py-1 tw-px-2">
-                {{ $lang->data['add_payment'] ?? 'Unpaid' }}
-            </button>
-        </div>
-    @endif
+@if ($isFullyPaid)
+    <div class="tw-mt-1">
+        <button type="button" class="btn rounded-pill btn-neutral-300 text-neutral-600 radius-8 tw-text-xs tw-py-1 tw-px-2">
+            {{ $lang->data['fully_paid'] ?? 'Fully Paid' }}
+        </button>
+    </div>
+@elseif ($isUnpaid)
+    <div class="tw-mt-1">
+        <button type="button" class="btn rounded-pill btn-success-100 text-success-600 radius-8 tw-text-xs tw-py-1 tw-px-2">
+            {{ $lang->data['Unpaid'] ?? 'Unpaid' }}
+        </button>
+    </div>
+@endif
 </div>
                             </td>
                             <td class="">
