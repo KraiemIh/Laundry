@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: laundry-laravel
+    env: docker
+    repo: https://github.com/KraiemIh/Laundry
+    plan: free
+    dockerfilePath: ./Dockerfile
+    branch: main
+    autoDeploy: true
